@@ -1,47 +1,15 @@
 
 
-1. SalesRegistration.py
-   - Defines a function named SalesRegistration which interacts with the user
-     via the console to record a single product purchase.
-   - First it asks for a product name.  Empty names are rejected and the
-     question is repeated until a non‑empty string is entered.
-   - Next it requests the product price.  The input is converted to a float;
-     negative values or non‑numeric inputs cause an error message and another
-     prompt.  This continues until a valid non‑negative number is supplied.
-   - Then it asks how many items the customer wishes to buy.  The response is
-     converted to an integer.  Negative numbers or invalid integers trigger an
-     error message and a retry loop.
-   - After all three values (name, price, quantity) have been validated, the
-     function computes the total cost by multiplying price and quantity.  It
-     returns a tuple containing the name, the unit price, the quantity, and
-     the computed total.
+- SalesRegistration.py:  interacts with the user to gather a product
+  name, price and quantity. Each input is validated (non-empty name,
+  non-negative numeric price, non-negative integer quantity). The
+  function returns the data as a tuple plus the computed total cost.
 
-2. ContinueShopping.py
-   - Imports the SalesRegistration function defined in the previous file.
-   - Defines a function called ContinueShopping that implements the main
-     interactive loop of the application.
-   - It maintains a history list to store each product tuple returned by
-     SalesRegistration.
-   - The loop repeatedly asks the user "Do you want to buy something?" and
-     accepts only the answers "yes" or "no" (ignoring case and extra
-     whitespace).
-   - If the user answers "yes", the program calls SalesRegistration to gather
-     a new product, appends the returned data to the history, and notifies the
-     user that the product was registered successfully.
-   - If the user answers "no", the function exits the loop after printing a
-     purchase summary.  This summary iterates over all items in the history,
-     displaying the product name, unit price, quantity, and line total for
-     each entry.  It also computes and prints the grand total of the entire
-     purchase and thanks the customer.
-   - Any other answer (neither "yes" nor "no") results in an error message
-     asking the user to enter a valid response, and the loop continues.
+- ContinueShopping.py:  contains the main loop.  It repeatedly asks the
+  customer if they want to buy something.  "Yes" triggers a call to
+  SalesRegistration; the result is added to a purchase history.  "No"
+  ends the loop and prints a receipt summarizing every item and the
+  grand total.  Inputs other than "yes"/"no" produce an error message.
 
-3. main.py
-   - Simply imports the ContinueShopping function from the ContinueShopping
-     module and invokes it.
-   - Effectively, running main.py starts the interactive shopping session.
-
-Usage note:
-   To operate the application, execute the main script in the project
-   directory.  The program will repeatedly prompt for product information and
-   display a final receipt when the customer is finished.
+- main.py:  simply imports and calls ContinueShopping, starting the
+  interactive shopping session.
